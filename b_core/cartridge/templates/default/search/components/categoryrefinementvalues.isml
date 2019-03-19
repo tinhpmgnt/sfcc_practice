@@ -44,7 +44,7 @@
 				<isloop items="${RefinementValues}" var="RefinementValue">
 					<iscomment>get the category object</iscomment>
 					<isset name="categoryObj" value="${dw.catalog.CatalogMgr.getCategory( RefinementValue.getValue() )}" scope="page"/>
-					<li <isif condition="${Refinements.getNextLevelCategoryRefinementValues(categoryObj).size() > 0}">class="expandable fa fa-angle-right<isif condition="${IDPath.contains(RefinementValue.getValue())}"> active fa-angle-down</isif>"</isif>>
+					<li <isif condition="${Refinements.getNextLevelCategoryRefinementValues(categoryObj).size() > 0}">class="expandable fa fa-plus<isif condition="${IDPath.contains(RefinementValue.getValue())}"> active fa-minus</isif>"</isif>>
 						<iscomment>render the actual link</iscomment>
 						<a class="refinement-link <isif condition="${IDPath.contains(RefinementValue.getValue())}"> active</isif>" title="${Resource.msgf('global.categoryrefinement.label','locale',null, RefinementValue.getDisplayValue())}" href="${SearchModel.urlRefineCategory('Search-Show',RefinementValue.getValue())}"><isprint value="${RefinementValue.getDisplayValue()}"/></a>
 
@@ -61,7 +61,7 @@
 		<isif condition="${Category.onlineSubCategories.size() > 0}">
 			<ul id="category-level-${CategoryLevel.toFixed()}">
 				<isloop items="${Category.onlineSubCategories}" var="SubCategory">
-					<li <isif condition="${SubCategory.onlineSubCategories.size() > 0}">class="expandable fa fa-angle-right<isif condition="${IDPath.contains(SubCategory.ID)}"> active fa-angle-down</isif>"</isif>>
+					<li <isif condition="${SubCategory.onlineSubCategories.size() > 0}">class="expandable fa fa-plus<isif condition="${IDPath.contains(SubCategory.ID)}"> active fa-minus</isif>"</isif>>
 						<iscomment>render the actual link</iscomment>
 						<isif condition="${SearchModel.categorySearch}">
 							<isset name="refineLinkUrl" value="${dw.catalog.ProductSearchModel.urlForCategory('Search-Show', SubCategory.ID)}" scope="page"/>

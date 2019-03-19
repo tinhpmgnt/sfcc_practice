@@ -54,7 +54,6 @@ function show() {
         }).render('util/redirect');
         return;
     }
-
     // Constructs the search based on the HTTP params and sets the categoryID.
     var Search = app.getModel('Search');
     var productSearchModel = Search.initializeProductSearchModel(params);

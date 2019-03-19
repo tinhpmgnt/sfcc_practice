@@ -22,7 +22,7 @@
 	<isscript>
 		var cat = pdict.ProductSearchResult.category;
 		var path = new dw.util.ArrayList();
-		while (cat && cat.parent) {
+		while (cat) {
 			if (!cat.online) {
 				cat = cat.parent;
 				continue;
@@ -35,7 +35,7 @@
 	<iscomment>Navigation header based on browsing vs. keyword search</iscomment>
 		<isif condition="${pdict.ProductSearchResult.categorySearch && pdict.ProductSearchResult.category.ID
 		!='root'}">
-			<span class="refinement-header"><isprint value="${path.get(0).displayName}"/></span>
+			<span class="refinement-header"><isprint value="${path.get(1).displayName}"/></span>
 		<iselse/>
 			<span class="refinement-header">${Resource.msg('searchrefinebar.searchresults','search',null)}</span>
 		</isif>
@@ -48,25 +48,15 @@
 			<isif condition="${RefinementDefinition.isCategoryRefinement()}">
 				<iscomment>render the category refinement label, display the top level category and a relax link in case we refined to a category already</iscomment>
 				<isif condition="${path.size() > 0}">
-	
-					<iscomment>display the top level label only for keyword searches</iscomment>
-						<div class="refinement-top-level">
-							<a href="${pdict.ProductSearchResult.urlRefineCategory('Search-Show', path.get(0).ID)}">
-								<isprint value="${path.get(0).displayName}"/>
-							</a>
-							(<a href="${pdict.ProductSearchResult.urlRelaxCategory('Search-Show')}">${Resource.msg('searchrefinebar.viewall','search',null)}</a>)
-						</div>
-
 					<iscategoryrefinementvalues searchmodel="${pdict.ProductSearchResult}" category="${path.get(0)}" categorypath="${path}" categorylevel="1"/>
-
 				<iselse/>
-
+					
+					
 					<h3 class="toggle">
 						<i class="fa fa-chevron-circle-down"></i>
 						<isprint value="${RefinementDefinition.getDisplayName()}"/>
 					</h3>
-
-					<iscategoryrefinementvalues searchmodel="${pdict.ProductSearchResult}" categorylevel="1"/>
+					<iscategoryrefinementvalues searchmodel="${pdict.ProductSearchResult}" category="${path.get(0)}" categorylevel="0"/>
 
 				</isif>
 

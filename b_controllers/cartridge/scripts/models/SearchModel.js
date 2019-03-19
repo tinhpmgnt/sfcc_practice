@@ -85,13 +85,13 @@ SearchModel.initializeProductSearchModel = function (httpParameterMap) {
     if (sortingRule) {
         productSearchModel.setSortingRule(sortingRule);
     }
-
     // only add category to search model if the category is online
     if (httpParameterMap.cgid.submitted) {
-        var category = CatalogMgr.getCategory(httpParameterMap.cgid.value);
+    	var category = CatalogMgr.getCategory(httpParameterMap.cgid.value);
         if (category && category.isOnline() && productSearchModel) {
             productSearchModel.setCategoryID(category.getID());
         }
+
     }
 
     return productSearchModel;
