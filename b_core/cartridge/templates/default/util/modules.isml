@@ -152,6 +152,16 @@
 	attribute="folderlevel"
 />
 
+<ismodule template = "components/pagingbarcustom"
+	name="pagingbarcustom"
+	attribute="pageurl"
+	attribute="pagingmodel"
+/>
+<ismodule template="components/paginginformationcustom"
+	name="paginginformationcustom"
+	attribute="pagingmodel"
+	attribute="pageurl"
+/>
 <iscomment>
 	Displays the information about the pagable on the page.
 	pagingmodel : the name of the model to use for paging
@@ -172,7 +182,12 @@
 	attribute="pagingmodel"
 	attribute="uniqueid"
 />
-
+<ismodule template="search/components/productsortingoptionscustom"
+	name="productsortingoptionscustom"
+	attribute="productsearchmodel"
+	attribute="pagingmodel"
+	attribute="uniqueid"
+/>
 <iscomment>
 	Creates a paging bar on the page
 </iscomment>

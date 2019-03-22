@@ -34,7 +34,8 @@
 	</iscomment>
 
 	<div class="content-slot slot-grid-header">
-		<isif condition="${!empty(pdict.ProductSearchResult.category)}">
+	<isset name="Category" value="${pdict.ProductSearchResult.category}" scope="page"/>
+		<isif condition="${!empty(Category)}">
 			<isslot id="cat-banner" context="category" description="Category Banner" context-object="${pdict.ProductSearchResult.category}"/>
 		<iselse/>
 			<isif condition="${pdict.SearchPromo != null}">
@@ -47,6 +48,7 @@
 				<isslot id="search-result-banner" description="Promotional Search Result Banner" context="global"/>
 			</isif>
 		</isif>
+		<h2><isprint value="${Category.displayName}" encoding="off"/></h2>
 	</div>
 
 	<isif condition="${!pdict.ProductSearchResult.refinedSearch && !empty(pdict.ContentSearchResult) && pdict.ContentSearchResult.count > 0}">
@@ -64,14 +66,15 @@
 	<isif condition="${!(pdict.ProductPagingModel == null) && !pdict.ProductPagingModel.empty}">
 
 		<div class="search-result-options">
-
-			<iscomment>sort by</iscomment>
-			<isproductsortingoptions productsearchmodel="${pdict.ProductSearchResult}" pagingmodel="${pdict.ProductPagingModel}" uniqueid="grid-sort-header"/>
-
 			<iscomment>pagination</iscomment>
-			<ispaginginformation pagingmodel="${pdict.ProductPagingModel}" pageurl="${pdict.ProductSearchResult.url('Search-Show')}"  uniqueid="grid-paging-header"/>
-			<ispagingbar pageurl="${pdict.ProductSearchResult.url('Search-Show')}" pagingmodel="${pdict.ProductPagingModel}"/>
+			<ispagingbarcustom pageurl="${pdict.ProductSearchResult.url('Search-Show')}" pagingmodel="${pdict.ProductPagingModel}"/>
+			
+			<ispaginginformationcustom pagingmodel="${pdict.ProductPagingModel}" pageurl="${pdict.ProductSearchResult.url('Search-Show')}"  uniqueid="grid-paging-header"/>
+			
+			<iscomment>sort by</iscomment>
+			<isproductsortingoptionscustom productsearchmodel="${pdict.ProductSearchResult}" pagingmodel="${pdict.ProductPagingModel}" uniqueid="grid-sort-header"/>
 
+			
 			<iscomment>render compare controls if we present in a category context</iscomment>
 			<isif condition="${!empty(pdict.ProductSearchResult) && !empty(pdict.ProductSearchResult.category) && compareEnabled}">
 				<iscomparecontrols category="${pdict.ProductSearchResult.category}"/>
@@ -84,12 +87,7 @@
 		</div>
 
 		<div class="search-result-options">
-
-			<iscomment>sort by</iscomment>
-			<isproductsortingoptions productsearchmodel="${pdict.ProductSearchResult}" pagingmodel="${pdict.ProductPagingModel}" uniqueid="grid-sort-footer"/>
-
 			<iscomment>pagination</iscomment>
-			<ispaginginformation pagingmodel="${pdict.ProductPagingModel}" pageurl="${pdict.ProductSearchResult.url('Search-Show')}" uniqueid="grid-paging-footer"/>
 			<ispagingbar pageurl="${pdict.ProductSearchResult.url('Search-Show')}" pagingmodel="${pdict.ProductPagingModel}"/>
 
 		</div>

@@ -50,8 +50,6 @@
 				<isif condition="${path.size() > 0}">
 					<iscategoryrefinementvalues searchmodel="${pdict.ProductSearchResult}" category="${path.get(0)}" categorypath="${path}" categorylevel="1"/>
 				<iselse/>
-					
-					
 					<h3 class="toggle">
 						<i class="fa fa-chevron-circle-down"></i>
 						<isprint value="${RefinementDefinition.getDisplayName()}"/>
@@ -66,7 +64,7 @@
 		<isif condition="${RefinementDefinition.isAttributeRefinement()}">
 
 			<h3 class="toggle">
-				<i class="fa fa-chevron-circle-down"></i>
+				<i class="fa fa-angle-down"></i>
 				<isprint value="${RefinementDefinition.getDisplayName()}"/>
 			</h3>
 
@@ -75,7 +73,6 @@
 					<a title="${Resource.msg('search.productsearchrefinebar.showallopt','search',null)}" href="${pdict.ProductSearchResult.urlRelaxAttribute('Search-Show',RefinementDefinition.attributeID)}">${Resource.msg('searchrefinebar.clearselection','search',null)}</a>
 				</div>
 			</isif>
-
 				<iscomment>Special handling for color and size refinement selection</iscomment>
 				<isif condition="${RefinementDefinition.attributeID.equals('refinementColor') || RefinementDefinition.attributeID.equals('size')}">
 
@@ -151,10 +148,9 @@
 
 			<isif condition="${pdict.ProductSearchResult.refinedByPrice}">
 				<div class="clear-refinement">
-					<a title="${Resource.msg('search.productsearchrefinebar.showallopt','search',null)}" href="${StringHelpers.unsanitizeOR(pdict.ProductSearchResult.urlRelaxPrice('Search-Show'))}">${Resource.msg('searchrefinebar.clearselection','search',null)}</a>
+					<a title="${Resource.msg('search.productsearchrefinebar.showallopt','search',null)}" href="${StringHelpers.unsanitizeOR(pdict.ProductSearchResult.urlRelaxPrice('Search-Show'))}">すべて</a>
 				</div>
 			</isif>
-
 			<ul>
 			<isloop items="${Refinements.getAllRefinementValues(RefinementDefinition)}" var="RefinementValue">
 				<isif condition="${pdict.ProductSearchResult.isRefinedByPriceRange(RefinementValue.valueFrom,RefinementValue.valueTo)}">

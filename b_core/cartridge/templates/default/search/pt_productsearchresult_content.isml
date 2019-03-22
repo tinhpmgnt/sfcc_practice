@@ -12,7 +12,6 @@
 
 	<div id="primary" class="primary-content">
 		<isinclude template="search/components/productsearchbreadcrumbs"/>
-	
 		<isreplace/>
 	</div>
 	

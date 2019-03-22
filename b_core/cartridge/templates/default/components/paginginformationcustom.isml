@@ -1,0 +1,43 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<iscomment>
+	Displays the state of the paging model. It expects the name of the
+	key of the pageable in a parameter "pageable" and a the current
+	page url in a parameter "pageurl".
+	
+	Taken out in simple UI
+</iscomment>
+<isscript>
+	
+	// in case there are multiple elements on a page
+	var uniqueId : String = '';
+	if (! empty(pdict.uniqueid))
+	{
+		uniqueId = pdict.uniqueid;
+	}
+	
+</isscript>
+<isif condition="${!dw.system.Site.getCurrent().getCustomPreferenceValue('enableInfiniteScroll') && !empty(pdict.pageurl) && !pdict.pagingmodel.empty}">
+	<isif condition="${pdict.pagingmodel.count > 12}">
+		
+		<div class="items-per-page">
+			<div class="selectbox-custom">
+				<ul class="selectbox-list" id="grid-paging-header">
+					<li <isif condition="${pdict.pagingmodel.pageSize == 12}">class="selected"</isif>><a href="${dw.web.PagingModel.appendPageSize(pdict.pageurl,12)}">12</a></li>
+					<isif condition="${pdict.pagingmodel.count >= 24}">
+						<li <isif condition="${pdict.pagingmodel.pageSize == 24}">class="selected"</isif>><a href="${dw.web.PagingModel.appendPageSize(pdict.pageurl,24)}">24</a></li>
+					</isif>
+					<isif condition="${pdict.pagingmodel.count >= 36}">
+						<li <isif condition="${pdict.pagingmodel.pageSize == 36}">class="selected"</isif>><a href="${dw.web.PagingModel.appendPageSize(pdict.pageurl,36)}">36</a></li>
+					</isif>
+					<isif condition="${pdict.pagingmodel.count >= 24}">
+						<li <isif condition="${pdict.pagingmodel.pageSize == 48}">class="selected"</isif>><a href="${dw.web.PagingModel.appendPageSize(pdict.pageurl,48)}">48</a></li>
+					</isif>
+					<isif condition="${(pdict.pagingmodel.count % 12) != 0 && (pdict.pagingmodel.count < 60)}">
+						<li <isif condition="${pdict.pagingmodel.count == pdict.pagingmodel.pageSize}">class="selected"</isif>><a href="${dw.web.PagingModel.appendPageSize(pdict.pageurl,pdict.pagingmodel.count)}">${Resource.msgf('global.paginginformation.viewallx','locale',null,pdict.pagingmodel.count)}</a></li>
+					</isif>
+				</ul>
+				<div class="selectbox-text"><isif condition="${pdict.pagingmodel.count == pdict.pagingmodel.pageSize}">表示すべて件<iselse>表示${pdict.pagingmodel.pageSize}件</isif></div>
+			</div>
+		</div><!-- END: itemsperpage -->
+	</isif>
+</isif>

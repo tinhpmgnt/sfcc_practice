@@ -224,7 +224,10 @@
 }
 #wrapper.pt_storefront, 
 #wrapper.pt_order-confirmation,
-#wrapper.pt_product-search-result {
+#wrapper.pt_product-search-result,
+#wrapper.pt_product-details,
+#wrapper.pt_cart,
+#wrapper.pt_product-search-noresult {
     width: 100%;
 }
 .header-flag-fix {
@@ -494,7 +497,259 @@ a.breadcrumb-element {
     font-weight: 400;
     color: #e03334;
 }
+.slot-grid-header h2 {
+    font-size: .875rem;
+    line-height: 30px;
+    margin: 10px;
+    font-family: Roboto, YuGothicM, YuGothic, sans-serif;
+}
+.refinement h3 {
+    background-color: #efefef;
+    border-top: 1px solid #e0e0e0;
+    font-size: 1.1em;
+    letter-spacing: .125em;
+    margin: 0 0 .65em;
+    padding: 1.15em .75em .75em;
+    text-transform: uppercase;
+}
+#secondary .refinement h3 {
+	cursor: pointer;
+    background-color: transparent;
+    border-width: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    display: inline-block;
+    padding-left: 20px;
+    position: relative;
+    font-family: Roboto, YuGothicM, YuGothic, sans-serif;
+}
+#secondary .refinement i {
+    position: absolute;
+    left: 0;
+    top: 5%;
+    color: #a7a7a7;
+    font-weight: 600;
+    font-size: 20px;
+    vertical-align: middle;
+}
+#secondary .refinement i.fa-angle-right {
+	left: 5px;
+}
+#secondary .refinement ul.swatches.refinementColor li {
+	margin: 0 6px 0 0;
+    padding: 0;
+}
+#secondary .refinement ul li a {
+    padding: 0;
+}
+#secondary .refinement ul.swatches.refinementColor a[id^=swatch-] {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #cecece;
+    margin: 0 0 10px;
+    border-radius: 0;
+}
+#secondary .refinement ul.swatches.refinementColor {
+	overflow: hidden;
+    margin-right: -6px;
+}
+#secondary .refinement:last-child ul {
+    margin-bottom: 0;
+}
+#secondary .refinement ul.swatches.refinementColor li.selected a {
+    border: 2px solid #e03334;
+}
+.refinement .clear-refinement {
+    font-weight: 700;
+    padding: 0 1.05em .4em;
+}
+#secondary .refinement.refinementColor .clear-refinement {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #cecece;
+    margin: 25px 0 10px;
+    border-radius: 0;
+    text-transform: uppercase;
+    float: none;
+    text-align: center;
+    padding: 0;
+}
+#secondary .refinement.refinementColor .clear-refinement a {
+    border-width: 0;
+    line-height: 27px;
+    text-align: center;
+    display: block;
+}
+#secondary .refinement ul {
+    padding: 0;
+    margin: 21px 0 25px;
+}
+#secondary .refinement a {
+    color: #000;
+}
+.search-result-options .sort-by-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0;
+    float: none;
+    width: 100%;
+    cursor: pointer;
+}
+.search-result-options .sort-by-list .sort-by-item {
+    width: 100%;
+    border: 1px solid #cecece;
+    margin-right: 3px;
+    text-align: center;
+    line-height: 28px;
+    font-size: .875rem;
+    padding: 5px;
+    font-family: Roboto, YuGothicM, YuGothic, sans-serif;
+}
+.search-result-options .sort-by-list .sort-by-item a {
+    display: block;
+}
+.search-result-options .sort-by-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0;
+    float: none;
+    width: 100%;
+    cursor: pointer;
+}
+a, body {
+    color: #000;
+}
+.search-result-options {
+    padding: 10px;
+    overflow: inherit;
+}
+.search-result-options .total-case-count {
+    font-size: 12px;
+    color: #666;
+    float: left;
+    margin: 0 0 10px;
+}
+.search-result-options .items-per-page {
+    float: left;
+    margin-right: .5em;
+}
+.search-result-options .items-per-page {
+    float: right;
+    color: #666;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    width: 30%;
+}
+.search-result-options .items-per-page .selectbox-custom {
+    position: relative;
+    height: 18px;
+}
+.search-result-options .items-per-page .selectbox-custom.active .selectbox-list {
+    display: block;
+}
+.search-result-options .items-per-page .selectbox-custom .selectbox-list {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: auto;
+    background: #fff;
+    z-index: 2;
+    border: 1px solid #cecece;
+    display: none;
+}
+.search-result-options .items-per-page .selectbox-custom .selectbox-list li {
+    border-bottom: 1px solid #cecece;
+    line-height: 15px;
+    padding: 5px 10px;
+    list-style: none;
+    cursor: pointer;
+    text-align: center;
+}
+.search-result-options .items-per-page .selectbox-custom .selectbox-list li.selected {
+    font-family: Roboto, YuGothicM, YuGothic, sans-serif;
+}
+.search-result-options .items-per-page .selectbox-custom .selectbox-list li:last-child {
+    border-bottom-width: 0;
+}
+.search-result-options .items-per-page .selectbox-custom .selectbox-text {
+    padding: 0 5px 0 15px;
+    float: right;
+    width: auto;
+    position: relative;
+    cursor: pointer;
+}
+.search-result-options .items-per-page .selectbox-custom .selectbox-text:before {
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(136, 183, 213, 0);
+    border-top-color: #666;
+    border-width: 5px;
+    margin-top: -5px;
+    border-top-width: 9px;
+    left: 0;
+    top: 50%;
+}
+.search-result-content {
+    display: inline-block;
+    width: 100%;
+}
+.search-result-content {
+    clear: both;
+}
+.search-result-items {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.search-result-items {
+    margin: 0;
+    padding: 0;
+}
+.search-result-items li {
+    list-style: none outside none;
+}
+.search-result-items li.grid-tile {
+    width: calc(31.33% - 10px);
+    margin: 10px 0 0 10px;
+    background: #eaeaea;
+    padding: 30px 10px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.search-result-items .grid-tile {
+    background: none repeat scroll 0 0 #fff;
+    -webkit-box-shadow: 0 0 9px #ccc;
+    box-shadow: 0 0 9px #ccc;
+    float: left;
+    list-style: none outside none;
+    margin: 0 0 2% 20px;
+    padding: 2%;
+    width: 26%;
+}
+.search-result-items .new-row {
+    clear: both;
+}
 @media screen and (min-width: 48rem) {
+	.search-result-options .sort-by {
+	    float: left;
+	    margin-right: .5em;
+	    padding-bottom: 0;
+	}
+	.search-result-options .sort-by {
+	    float: left;
+	    margin-right: .5em;
+	    padding-bottom: 0;
+	}
 	h1 {
 	    font-size: 1.75em;
 	    margin: 0 0 14px;
