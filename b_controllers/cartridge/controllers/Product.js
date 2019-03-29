@@ -107,7 +107,15 @@ function hitTile() {
 
     var Product = app.getModel('Product');
     var product = Product.get(params.pid.stringValue);
-
+    var objret = product.object;
+    var isNewTest= objret.custom.isNewtest;
+    var PVM = objret.variationModel;
+    var selectableColors = new dw.util.ArrayList();
+	var colorVarAttr;
+    colorVarAttr = PVM.getProductVariationAttribute('color');
+	if (colorVarAttr) {
+		selectableColors = PVM.getFilteredValues(colorVarAttr);
+	}
     if (product.isVisible()) {
         var productView = app.getView('Product', {
             product: product,
@@ -115,7 +123,8 @@ function hitTile() {
             showpricing: true,
             showpromotion: true,
             showrating: true,
-            showcompare: true
+            showcompare: true,
+            showswatchesimage: false
         });
 
         productView.product = product.object;

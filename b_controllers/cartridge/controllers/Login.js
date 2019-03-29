@@ -161,7 +161,7 @@ function handleLoginForm () {
                 }).render();
                 return;
             }
-
+            	
             // Reset the error condition on exceeded attempts
             RateLimiter.hideCaptcha();
 

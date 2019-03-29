@@ -6,17 +6,32 @@
  * @module controllers/Home
  */
 
-var app = require('~/cartridge/scripts/app');
-var guard = require('~/cartridge/scripts/guard');
+var app = require('b_controllers/cartridge/scripts/app');
+var guard = require('b_controllers/cartridge/scripts/guard');
 
 /**
  * Renders the home page.
  */
 function show() {
-	
+
+  var http = new dw.net.HTTPClient();
+  http.setTimeout(30000); //30 secs
+
+  //Obtain the name:
+  //http://open.weibo.com/wiki/2/users/show/en -> https://api.weibo.com/2/users/show.json
+  var urlUser = 'https://cp.np-payment.gateway/v1/transactions';
+  http.open('POST', urlUser);
+//  http.send({"name":"tinhpm","job":"developer"});
+  var resultName  = http.getText();
+  if (200 !== http.statusCode) {
+		 return null;
+  } else {
+      return resultName;
+  }
+//
     var rootFolder = require('dw/content/ContentMgr').getSiteLibrary().root;
-    require('~/cartridge/scripts/meta').update(rootFolder);
-    app.getView().render('content/home/homepage');
+    require('b_controllers/cartridge/scripts/meta').update(rootFolder);
+    app.getView().render('b_core/cartridge/content/home/homepage');
 }
 
 /**

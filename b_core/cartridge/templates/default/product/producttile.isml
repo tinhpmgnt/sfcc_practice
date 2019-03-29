@@ -7,12 +7,13 @@
 	This template renders a product tile using a product. The following parameters
 	must be passed into the template module:
 
-	product 		: the product to render the tile for
-	showswatches 	: check, whether to render the color swatches (default is false)
-	showpricing		: check, whether to render the pricing (default is false)
-	showpromotion	: check, whether to render the promotional messaging (default is false)
-	showrating		: check, whether to render the review rating (default is false)
-	showcompare		: check, whether to render the compare checkbox (default is false)
+	product 			: the product to render the tile for
+	showswatches 		: check, whether to render the color swatches (default is false)
+	showpricing			: check, whether to render the pricing (default is false)
+	showpromotion		: check, whether to render the promotional messaging (default is false)
+	showrating			: check, whether to render the review rating (default is false)
+	showcompare			: check, whether to render the compare checkbox (default is false)
+	showswatchesimage 	: check, whether to render the image swatches
 </iscomment>
 
 <isset name="Product" value="${pdict.product}" scope="page"/>
@@ -36,6 +37,7 @@
 		var showpromotion = pdict.showpromotion || false;
 		var showrating = pdict.showrating || false;
 		var showcompare = pdict.showcompare || false;
+		var showswatchesimage = pdict.showswatchesimage || false;
 
 		var selectableColors = new dw.util.ArrayList();
 		var imageSize = 'medium';
@@ -117,6 +119,12 @@
 			<a class="thumb-link" href="${productUrl}" title="${Product.name}">
 				<img src="${thumbnailUrl}" alt="${thumbnailAlt}"/>
 			</a>
+			<isif condition="${Product.custom.isNewtest}">
+				<div class="product-badges">
+					<span class="isNewtest">最新</span>
+				</div>
+			</isif>
+			
 		</div>
 
 		<iscomment>Product Name</iscomment>
@@ -126,7 +134,13 @@
 				<isprint value="${Product.name}"/>
 			</a>
 		</div>
-
+		
+		<iscomment>Product ID</iscomment>
+		<iscomment>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</iscomment>
+		<div class="product-id">
+			<isprint value="${Product.ID}"/>
+		</div>
+		
 		<iscomment>Pricing</iscomment>
 		<iscomment>++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</iscomment>
 		<isif condition="${showpricing}">
@@ -317,11 +331,15 @@
 							<isif condition="${!empty(pdict.ProductSearchResult)}">
 								<isset name="swatchproductUrl" value="${pdict.ProductSearchResult.url(swatchproductUrl)}" scope="page"/>
 							</isif>
-
 							<iscomment>render a single swatch, the url to the proper product detail page is contained in the href of the swatch link</iscomment>
-							<li>
+							<li class="swatch-${colorValue.value}">
 								<a href="${swatchproductUrl}" class="swatch ${(preselectCurrentSwatch) ? 'selected' : ''}" title="${swatchTitle}">
-									<img class="swatch-image" src="${swatchUrl}" alt="${swatchAlt}"  data-thumb='{"src":"${thumbnailUrl}","alt":"${thumbnailAlt}","title":"${thumbnailTitle}"}'/>
+									<isif condition="${showswatchesimage}">
+										<img class="swatch-image" src="${swatchUrl}" alt="${swatchAlt}"  data-thumb='{"src":"${thumbnailUrl}","alt":"${thumbnailAlt}","title":"${thumbnailTitle}"}'/>
+									<iselse>
+										<img style="display: none;" class="swatch-image" src="${swatchUrl}" alt="${swatchAlt}"  data-thumb='{"src":"${thumbnailUrl}","alt":"${thumbnailAlt}","title":"${thumbnailTitle}"}'/>
+										<span class="swatch-image">&nbsp;</span>
+									</isif>
 								</a>
 							</li>
 						</isloop>

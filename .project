@@ -6,6 +6,7 @@
 		<project>b_core</project>
 		<project>b_controllers</project>
 		<project>b_pipelines</project>
+		<project>b_payment</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

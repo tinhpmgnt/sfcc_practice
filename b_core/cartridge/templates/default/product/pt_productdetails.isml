@@ -33,7 +33,7 @@
 
 			<div id="primary" class="primary-content">
 
-				<div id="product-nav-container">
+				<div id="product-nav-container" style="display:none;">
 					<isinclude template="search/productnav"/>
 				</div> <!-- /product-nav-container -->
 

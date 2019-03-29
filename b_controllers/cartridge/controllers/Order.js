@@ -9,8 +9,10 @@
 /* API Includes */
 var ContentMgr = require('dw/content/ContentMgr');
 var OrderMgr = require('dw/order/OrderMgr');
+var OrderItem = require('dw/order/OrderItem');
 var PagingModel = require('dw/web/PagingModel');
-
+var CustomObjectMgr : CustomObjectMgr = require('dw/object/CustomObjectMgr');
+var Transaction = require('dw/system/Transaction');  
 /* Script Modules */
 var app = require('~/cartridge/scripts/app');
 var guard = require('~/cartridge/scripts/guard');
@@ -48,7 +50,6 @@ function history() {
     }).render('account/orderhistory/orders');
 }
 
-
 /**
  * Gets an OrderView and renders the order detail page (account/orderhistory/orderdetails template). If there is an error,
  * redirects to the {@link module:controllers/Order~history|history} function.
@@ -58,7 +59,11 @@ function orders() {
     orderListForm.handleAction({
         show: function (formGroup, action) {
             var Order = action.object;
-
+            var custom : CustomObject = Order.custom;
+            var mySitePrefValue : String = Order.getCustom()["testID"];
+          
+//            var a = Order.setCustomPreferenceValue('testID',{value:'baba'})
+//            Order.getCustom()["testID"] = 'test';
             app.getView({Order: Order}).render('account/orderhistory/orderdetails');
         },
         error: function () {
@@ -67,8 +72,6 @@ function orders() {
     });
 
 }
-
-
 /**
  * Renders a page with details of a single order. This function
  * renders the order details by the UUID of the order, therefore it can also be used

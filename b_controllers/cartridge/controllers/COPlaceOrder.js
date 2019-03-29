@@ -170,7 +170,7 @@ function start() {
             };
         });
     }
-
+    
     var orderPlacementStatus = Order.submit(order);
     if (!orderPlacementStatus.error) {
         clearForms();
