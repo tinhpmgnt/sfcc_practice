@@ -18,6 +18,8 @@ var Cart = require('~/cartridge/scripts/models/CartModel');
  * This controller is used in an AJAX call to set the session variable 'currency'.
  */
 function setSessionCurrency() {
+
+    //tdsdas
     var currencyMnemonic = request.httpParameterMap.currencyMnemonic.value;
     var Response = require('~/cartridge/scripts/util/Response');
     var currency;
