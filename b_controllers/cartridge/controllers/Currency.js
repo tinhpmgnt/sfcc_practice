@@ -19,7 +19,7 @@ var Cart = require('~/cartridge/scripts/models/CartModel');
  */
 function setSessionCurrency() {
 
-    //tdsdas
+    //test 3
     var currencyMnemonic = request.httpParameterMap.currencyMnemonic.value;
     var Response = require('~/cartridge/scripts/util/Response');
     var currency;
