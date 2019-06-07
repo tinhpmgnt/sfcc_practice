@@ -5,3 +5,5 @@ This SiteGenesis is now fully standard Javascript compliant using the new [Contr
 This documentation is meant to serve as a reference to quickly lookup supported functionality and is fully based on the documentation inside the code. You can continue to maintain these [JSDoc comments](http://usejsdoc.org/) to generate a similar documentation for your own project.
 
 Enjoy!
+Haha
+
